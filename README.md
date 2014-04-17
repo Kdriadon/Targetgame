@@ -1,10 +1,6 @@
 Targetgame
 ==========
 
-SE103 game
-
-Idea by: Chris
-
-Contibutors: Chris,
-Kevin,
-Ashish
+Chris Macco 
+Kevin Driadon 
+Ashish Timilsina
