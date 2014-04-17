@@ -1,7 +1,7 @@
 Targetgame
 ==========
 
-Chris Macco, 
+Chris Macco,  
 Kevin Driadon,  
 Ashish Timilsina
 
