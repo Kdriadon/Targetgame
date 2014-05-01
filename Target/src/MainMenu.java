@@ -1,0 +1,91 @@
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MainMenu extends JFrame
+{
+	JPanel panelStart;
+	JButton start, settings, quit; 
+	
+	public MainMenu()
+	{
+		//Setting up GUI
+		super("Target Game");
+		mainMenu();
+	}
+	public void mainMenu()
+	{
+		//Border Layout should always be center 
+				setLayout(new FlowLayout());
+				
+				//Set up start button 
+				start = new JButton("Start"); 
+				start.addActionListener(
+						new ActionListener()
+						{
+							@Override
+							public void actionPerformed(ActionEvent e) 
+							{
+								//Call method that brings you to the options of the type of game this includes making things visible and invisible 
+								//Call class Mode
+								mainMenuInvisibility(); 
+								//make a class below, more instructions are in mode 
+								Mode mode = new Mode(); 
+								mode.modeMenu(); 
+								mode.setSize(200, 300); 
+								mode.setVisible(true);
+							}
+							
+						}
+						
+					);
+				//Setting up settings button 
+				settings = new JButton("Settings"); 
+				settings.addActionListener(
+						new ActionListener()
+						{
+							@Override
+							public void actionPerformed(ActionEvent e) 
+							{
+								//Call method that brings you to a new GUI for the settings menu this includes making things visible and invisible 
+								//Call Class SettingsMenu
+							}
+							
+						}
+						
+					);
+				//Quitting the game 
+				quit = new JButton("Quit"); 
+				quit.addActionListener(
+						new ActionListener()
+						{
+							@Override
+							public void actionPerformed(ActionEvent e) 
+							{
+								System.exit(1); 
+							}
+							
+						}
+						
+					);
+				
+				//Making a new Start Menu Panel
+				panelStart = new JPanel(); 
+				
+				//Adding the buttons to the Start Menu 
+				panelStart.add(start);
+				panelStart.add(settings);
+				panelStart.add(quit);
+				add(panelStart); 
+	}
+	public void mainMenuInvisibility()
+	{
+		MainMenu application = new MainMenu(); 
+		application.setVisible(false); 
+	}
+}

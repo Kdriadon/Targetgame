@@ -5,9 +5,10 @@ public class runGame
 {
 	public static void main(String[] agrs)
 	{
-		Game application = new Game(); 
+		MainMenu application = new MainMenu(); 
 		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		application.setSize(200, 300); 
 		application.setVisible(true); 
+		//This line above should be called in the regular menus so we can control the visibility of the menus 
 	}
 }
