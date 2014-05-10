@@ -60,7 +60,6 @@ public class Mode extends JFrame
 					public void actionPerformed(ActionEvent e) 
 					{
 						modeMenuInvisibility(); 
-						//Make class for this 
 						MainMenu main = new MainMenu(); 
 						main.setSize(400, 300); 
 						main.setVisible(true);

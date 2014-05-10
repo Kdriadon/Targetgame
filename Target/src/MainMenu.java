@@ -33,7 +33,6 @@ public class MainMenu extends JFrame
 						//Call method that brings you to the options of the type of game this includes making things visible and invisible 
 						//Call class Mode
 						mainMenuInvisibility(); 
-						//make a class below, more instructions are in mode 
 						Mode mode = new Mode(); 
 						mode.setSize(400, 300); 
 						mode.setVisible(true);	
