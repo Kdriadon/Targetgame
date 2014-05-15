@@ -20,6 +20,8 @@ public class SettingsMenu extends JFrame implements ActionListener
 	public Formatter output; 
 	public Scanner input; 
 	
+	
+	
 	JPanel panelSettings, panelNorth, panelCenter, panelSouth; 
 	
 	public SettingsMenu() 
