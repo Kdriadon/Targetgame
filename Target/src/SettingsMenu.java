@@ -15,8 +15,7 @@ public class SettingsMenu extends JFrame implements ActionListener
 	//Sets up objects needed for code later 
 	private JRadioButton easy, medium, hard; 
 	private JRadioButton black, blue, green, yellow, white; 
-	private JRadioButton speedRun;
-	private JRadioButton normal; 
+	private JRadioButton speedRun, normal;
 	private JButton goBack, submit; 
 	
 	protected Formatter output; 
