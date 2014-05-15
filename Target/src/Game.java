@@ -3,10 +3,12 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+
 public class Game extends JButton implements ActionListener   {
 	public Game(){
 		
 		target();
+		//when you press escape bring up a start menu 
 	}
 	public void target(){
 		JFrame frame = new JFrame("HIT!");

@@ -1,6 +1,6 @@
 import javax.swing.JFrame;
 
-
+//Main class runs the game 
 public class runGame 
 {
 	public static void main(String[] agrs)
