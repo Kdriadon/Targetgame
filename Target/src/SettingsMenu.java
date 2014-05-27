@@ -13,9 +13,9 @@ import javax.swing.*;
 public class SettingsMenu extends JFrame implements ActionListener
 {
 	//Sets up objects needed for code later 
-	private JRadioButton easy, medium, hard; 
-	private JRadioButton black, blue, green, yellow, white; 
-	private JRadioButton speedRun, normal;
+	protected JRadioButton easy, medium, hard; 
+	protected JRadioButton black, blue, green, yellow, white; 
+	protected JRadioButton speedRun, normal;
 	private JButton goBack, submit; 
 	
 	protected Formatter output; 
@@ -33,7 +33,7 @@ public class SettingsMenu extends JFrame implements ActionListener
 	{
 		super("Settings Menu"); 
 		settings();
-		createSettingsFile(); 
+		createSettingsFile();
 	}
 	//GUI setttings menu 
 	public void settings()
@@ -119,7 +119,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 		panelSettings.add(panelSouth, BorderLayout.SOUTH); 
 		
 		add(panelSettings);
-		 
 	}
 	//When the button is clicked it will submit a certain selected setting and call a method to write it to the file 
 	@Override
@@ -231,5 +230,4 @@ public class SettingsMenu extends JFrame implements ActionListener
 			output.close(); 
 		}
 	}
-	
 }

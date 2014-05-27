@@ -7,15 +7,8 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-
-/*
- * ADD COMMENTS
- * TO EVERY FILE
- * INCLUDING THIS ONE
- */
-
 public class readIn extends SettingsMenu
-{
+{ 
 	public void openFile()
 	{
 		try
@@ -56,7 +49,7 @@ public class readIn extends SettingsMenu
 				}
 				else if (input.nextInt() == 5)
 				{
-					Green = true; 
+					Green = true;  
 				}
 				else if (input.nextInt() == 6)
 				{
@@ -68,13 +61,13 @@ public class readIn extends SettingsMenu
 				}
 				else if (input.nextInt() == 8)
 				{
-					SpeedRun = true; 
+					SpeedRun = true;  
 				}
 				else if (input.nextInt() == 9)
 				{
 					Normal = true; 
+					normal.setSelected(true);
 				}
-				
 			}
 		}
 		catch(NoSuchElementException ex)
