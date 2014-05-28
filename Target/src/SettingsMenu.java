@@ -12,23 +12,30 @@ import javax.swing.*;
 
 public class SettingsMenu extends JFrame implements ActionListener
 {
-	private JRadioButton easy, medium, hard; 
-	private JRadioButton black, blue, green, yellow, white; 
-	private JRadioButton speedRun, normal; 
+	//Sets up objects needed for code later 
+	protected JRadioButton easy, medium, hard; 
+	protected JRadioButton black, blue, green, yellow, white; 
+	protected JRadioButton speedRun, normal;
 	private JButton goBack, submit; 
 	
-	public Formatter output; 
-	public Scanner input; 
+	protected Formatter output; 
+	protected Scanner input; 
 	
+	protected int EASY = 0, MEDIUM = 1, HARD = 2, BLACK = 3, BLUE = 4, GREEN = 5, YELLOW = 6, WHITE = 7, SPEEDRUN = 8, NORMAL = 9;
+	protected boolean Easy = false, Medium = false, Hard = false, Black = false, Blue = false, Green = false, Yellow = false, White = false, SpeedRun = false, Normal = false;  
 	
+	protected int type = 9, color = 3, difficulty = 0; 
 	
 	JPanel panelSettings, panelNorth, panelCenter, panelSouth; 
 	
+	//Constructor 
 	public SettingsMenu() 
 	{
 		super("Settings Menu"); 
 		settings();
+		createSettingsFile();
 	}
+	//GUI setttings menu 
 	public void settings()
 	{
 		setLayout(new FlowLayout());
@@ -112,56 +119,74 @@ public class SettingsMenu extends JFrame implements ActionListener
 		panelSettings.add(panelSouth, BorderLayout.SOUTH); 
 		
 		add(panelSettings);
-		 
 	}
+	//When the button is clicked it will submit a certain selected setting and call a method to write it to the file 
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		Easy = false; 
+		Medium = false; 
+		Hard = false; 
+		Black = false; 
+		Blue = false; 
+		Green = false; 
+		Yellow = false; 
+		White = false; 
+		SpeedRun = false; 
+		Normal = false; 
 		if (normal.isSelected())
 		{
-			
+			type = NORMAL; 
 		}
 		else if (speedRun.isSelected()); 
 		{
-			
+			type = SPEEDRUN; 
 		}
 		if (easy.isSelected()) 
 		{
-			
+			difficulty = EASY;  
 		}
 		else if (medium.isSelected())
 		{
-			
+			difficulty = MEDIUM; 
 		}
 		else if (hard.isSelected())
 		{
-			
+			difficulty = HARD; 
 		}
 		if (black.isSelected())
 		{
-			
+			color = BLACK;  
 		}
 		else if (blue.isSelected())
 		{
-			
+			color = BLUE;  
 		}
 		else if (green.isSelected())
 		{
-			
+			color = GREEN; 	
 		}
 		else if (yellow.isSelected())
 		{
-			
+			color = YELLOW; 
 		}
 		else if (white.isSelected())
 		{
-			
+			color = WHITE; 
 		}
+		updateSetting(type, difficulty, color); 
+		closeWriteFile(); 
+		settingsInvisibility(); 
+		MainMenu main = new MainMenu(); 
+		main.setSize(400, 300); 
+		main.setVisible(true);
 	}
+	//Makes this menu invisible
 	public void settingsInvisibility()
 	{
 		super.dispose();
 	}
+	//Opens the settings.txt file
 	public void createSettingsFile()
 	{
 		try
@@ -179,6 +204,7 @@ public class SettingsMenu extends JFrame implements ActionListener
                     JOptionPane.ERROR_MESSAGE);
 		}	
 	}
+	//Updates the settings and re-writes the file
 	public void updateSetting(int type, int difficulty, int color)
 	{
 		try
@@ -196,53 +222,12 @@ public class SettingsMenu extends JFrame implements ActionListener
                     JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	//Closes the settings.txt file
 	public void closeWriteFile()
 	{
 		if (output != null)
 		{
 			output.close(); 
-		}
-	}
-	public void openFile()
-	{
-		try
-		{
-			input = new Scanner(new File("setting.txt"));
-		}
-		catch (FileNotFoundException ex)
-		{
-			JOptionPane.showMessageDialog(null, ex.toString(), "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	public void readInSettings()
-	{
-		try 
-		{
-			while (input.hasNextLine())
-			{
-				if (input.nextInt() == 1)
-				{
-					normal.setEnabled(true);
-				}
-			}
-		}
-		catch(NoSuchElementException ex)
-		{
-			JOptionPane.showMessageDialog(null, ex.toString(), "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}
-		catch(IllegalStateException ex)
-		{
-			JOptionPane.showMessageDialog(null, ex.toString(), "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	public void closeReadFile()
-	{
-		if (input != null)
-		{
-			input.close();
 		}
 	}
 }
