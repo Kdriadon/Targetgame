@@ -1,48 +1,111 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 
 import javax.swing.*;
-
-public class Game extends JButton implements ActionListener   {
+public class Game extends JButton   {
 	public Game(){
 		
 		target();
-		//when you press escape bring up a start menu 
 	}
+	//initialize the values
+	int fpoint = 0;
+	int spoint = 0;
+	int tpoint = 0;
+	int total = fpoint + spoint + tpoint; 
+	Random rand = new Random();
+	int n = rand.nextInt(300);
+	//Target method to make the buttons and set their colors
 	public void target(){
+		
 		JFrame frame = new JFrame("HIT!");
 		frame.setVisible(true);
-		frame.setSize(600,400);
+		frame.setSize(500,500);
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
 	
-		JButton  first = new JButton();
+		final JButton  first = new JButton();
 		first.setBackground(Color.WHITE);
-		first.setSize(75, 75);
-		JButton second = new JButton();
+		final JButton second = new JButton();
 		second.setBackground(Color.RED);
-		second.setSize(50, 50);
 
-		JButton third = new JButton();
+		final JButton third = new JButton();
 		third.setBackground(Color.WHITE);
-		third.setSize(25, 25);
 
 		panel.add(first);
 		first.add(second);
 		second.add(third);
 		
-		
 		this.setVisible(true);
-		first.addActionListener(this);
-		second.addActionListener(this);
-		third.addActionListener(this);
-		 
-		frame.add(panel);
+		//action listener for the first button
+		first.addActionListener(
+				new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e) {
+							 fpoint += 1;
+							 total = fpoint + spoint + tpoint; 
+							 System.out.println(total);
+							 if (e.getSource() == first){
+							        first.setLocation(rand.nextInt(300),rand.nextInt(300));
+					                first.repaint();
+					            }
+					}
+					}
+				
+			);
+		
+		//action listener for the second button
 
+		second.addActionListener(
+				new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e) {
+							 spoint += 2;
+							 total = fpoint + spoint + tpoint;
+							 System.out.println(total);
+							 if (e.getSource() == second){
+								 for(int i=0;i<=300;i++)
+						            {
+						                first.setLocation(rand.nextInt(300),rand.nextInt(300));
+						                first.repaint();
+						            }
+						}
+							 }
+					
+				}
+			);
 		
+		//action listener for the third button
+
+		third.addActionListener(
+				new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						tpoint += 3;
+						 total = fpoint + spoint + tpoint;
+						 System.out.println(total);	
+						 if (e.getSource() == third){
+							 for(int i=0;i<=300;i++)
+					            {
+					                first.setLocation(rand.nextInt(300),rand.nextInt(300));
+					                first.repaint();
+					            }
+					}
+						 }
+					
+				}
+			);
+				
+		System.out.println(total);
+
+		frame.add(panel);
 	}
-	public void actionPerformed(ActionEvent e){
-		
-	}
+	//the main method	
+	public static void  main(String args[]) {
+		new Game();
+}
 }
