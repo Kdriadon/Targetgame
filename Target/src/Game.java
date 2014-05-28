@@ -15,7 +15,6 @@ public class Game extends JButton   {
 	int tpoint = 0;
 	int total = fpoint + spoint + tpoint; 
 	Random rand = new Random();
-	int n = rand.nextInt(300);
 	//Target method to make the buttons and set their colors
 	public void target(){
 		
