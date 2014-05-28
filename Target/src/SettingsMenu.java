@@ -10,30 +10,29 @@ import java.util.Scanner;
 
 import javax.swing.*;
 
+
 public class SettingsMenu extends JFrame implements ActionListener
-{
+{	
 	//Sets up objects needed for code later 
 	protected JRadioButton easy, medium, hard; 
 	protected JRadioButton black, blue, green, yellow, white; 
 	protected JRadioButton speedRun, normal;
 	private JButton goBack, submit; 
-	
+
 	protected Formatter output; 
 	protected Scanner input; 
-	
+
 	protected int EASY = 0, MEDIUM = 1, HARD = 2, BLACK = 3, BLUE = 4, GREEN = 5, YELLOW = 6, WHITE = 7, SPEEDRUN = 8, NORMAL = 9;
-	protected boolean Easy = false, Medium = false, Hard = false, Black = false, Blue = false, Green = false, Yellow = false, White = false, SpeedRun = false, Normal = false;  
-	
-	protected int type = 9, color = 3, difficulty = 0; 
-	
+	protected boolean Easy, Medium, Hard, Black, Blue, Green, Yellow, White, SpeedRun, Normal; 
+	private int type = 9, color = 3, difficulty = 0; 
+
 	JPanel panelSettings, panelNorth, panelCenter, panelSouth; 
 	
 	//Constructor 
 	public SettingsMenu() 
 	{
 		super("Settings Menu"); 
-		settings();
-		createSettingsFile();
+		settings();	
 	}
 	//GUI setttings menu 
 	public void settings()
@@ -138,7 +137,7 @@ public class SettingsMenu extends JFrame implements ActionListener
 		{
 			type = NORMAL; 
 		}
-		else if (speedRun.isSelected()); 
+		else if (speedRun.isSelected()) 
 		{
 			type = SPEEDRUN; 
 		}
@@ -174,6 +173,7 @@ public class SettingsMenu extends JFrame implements ActionListener
 		{
 			color = WHITE; 
 		}
+		createSettingsFile(); 
 		updateSetting(type, difficulty, color); 
 		closeWriteFile(); 
 		settingsInvisibility(); 
