@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Formatter;
@@ -13,7 +14,7 @@ public class readIn extends SettingsMenu
 	{
 		try
 		{
-			input = new Scanner(new File("setting.txt"));
+			input = new Scanner(new File("settings.txt"));
 		}
 		catch (FileNotFoundException ex)
 		{
@@ -25,48 +26,48 @@ public class readIn extends SettingsMenu
 	{
 		try 
 		{
-			while (input.hasNextLine())
+			while (input.hasNext())
 			{
-				if (input.nextInt() == 0)
+				int settingInput = input.nextInt();
+				if (settingInput == 0)
 				{
 					Easy = true; 
 				}
-				else if (input.nextInt() == 1)
+				else if (settingInput == 1)
 				{
 					Medium = true; 
 				}
-				else if (input.nextInt() == 2)
+				else if (settingInput == 2)
 				{
 					Hard = true; 
 				}
-				else if (input.nextInt() == 3)
+				if (settingInput == 3)
 				{
 					Black = true; 
 				}
-				else if (input.nextInt() == 4)
+				else if (settingInput == 4)
 				{
 					Blue = true; 
 				}
-				else if (input.nextInt() == 5)
+				else if (settingInput == 5)
 				{
 					Green = true;  
 				}
-				else if (input.nextInt() == 6)
+				else if (settingInput == 6)
 				{
 					Yellow = true; 
 				}
-				else if (input.nextInt() == 7)
+				else if (settingInput == 7)
 				{
 					White = true; 
 				}
-				else if (input.nextInt() == 8)
+				if (settingInput == 8)
 				{
 					SpeedRun = true;  
 				}
-				else if (input.nextInt() == 9)
+				else if (settingInput == 9)
 				{
 					Normal = true; 
-					normal.setSelected(true);
 				}
 			}
 		}
@@ -87,5 +88,15 @@ public class readIn extends SettingsMenu
 		{
 			input.close();
 		}
+	}
+	public int getDifficulty()
+	{
+		return 0;
+		//this should be set to a variable 
+	}
+	public Color getColor()
+	{
+		return Color.GREEN;
+		//this should be set to a variable 
 	}
 }
