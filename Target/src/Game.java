@@ -19,6 +19,7 @@ public class Game extends JFrame{
 	int minus;
 	int stops = 500;
 	public Timer timer; 
+	HighScore hscore = new HighScore();
 
 	
 	public Game()
@@ -40,7 +41,8 @@ public class Game extends JFrame{
 		TimerTask gameover = new TimerTask() { 
             @Override
             public void run() {
-                JOptionPane.showMessageDialog(null, "You lost the game! You did not play the game!","Game Over",JOptionPane.OK_CANCEL_OPTION);
+                hscore.setscore(total); 
+                JOptionPane.showMessageDialog(null, "You lost! You did not play the game! Your highscore is " + hscore.highscore,"Game Over",JOptionPane.OK_CANCEL_OPTION);
                 gameInvisibility(); 
             }
          };
@@ -53,7 +55,8 @@ public class Game extends JFrame{
 		{
 			@Override
 			public void run() {
-                JOptionPane.showMessageDialog(null, "Game Over! Your score is: " + total,"Game Over",JOptionPane.OK_CANCEL_OPTION);
+	             hscore.setscore(total);
+	                JOptionPane.showMessageDialog(null, "Game Over! Your score is: " + total + " Your highscore is " + hscore.highscore,"Game Over",JOptionPane.OK_CANCEL_OPTION);
                 gameInvisibility(); 
 			}	
 		}; 
