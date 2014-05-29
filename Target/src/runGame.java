@@ -17,10 +17,6 @@ public class runGame
 		readIn retrieve = new readIn(); 
 		retrieve.openFile();
 		retrieve.readInSettings();
-		retrieve.getColor();
 		retrieve.closeReadFile();
-		
-		applySettings settings = new applySettings(); 
-		settings.applyToSettings();
 	}
 }

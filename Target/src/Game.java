@@ -5,36 +5,47 @@ import java.util.Random;
 import java.util.TimerTask;
 
 import javax.swing.*;
-public class Game extends JButton   {
-	int secs = 10000;
-	int minus = 500;
-	int stops = 1000;
+public class Game extends JFrame{
 	
+	//initialize the values
+	JPanel panel; 
+	int fpoint = 0;
+	int spoint = 0;
+	int tpoint = 0;
+	int total = fpoint + spoint + tpoint; 
+	Random rand = new Random();
+	Color color;
+	int secs = 10000;
+	int minus;
+	int stops = 1000;
 	public Timer timer; 
 
-	public Game(){
-		
+	
+	public Game()
+	{
+		readIn read = new readIn(); 
+		read.openFile();
+		read.readInSettings();
+		color = read.getColor(); 
+		minus = read.getDifficulty();
+		read.closeReadFile();
 	}
 	public void runGame()
-	{
+	{	
 		time();
-		target();
+		normalTarget();
 	}
 	public void time(){
-		
-		 
-		
-		{
-			TimerTask gameover = new TimerTask() { 
-	            @Override
-	            public void run() {
-	                JOptionPane.showMessageDialog(null, "You lost the game!","Game Over",JOptionPane.ERROR_MESSAGE);
-	                System.exit(0);
-	            }
-	         };
-	         timer = new Timer(); 
-	         timer.schedule(gameover, secs);
-		}
+
+		TimerTask gameover = new TimerTask() { 
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "You lost the game! Your score: 0","Game Over",JOptionPane.OK_CANCEL_OPTION);
+                gameInvisibility(); 
+            }
+         };
+         timer = new Timer(); 
+         timer.schedule(gameover, secs);
 	}
 	public void updateTime(int seconds)
 	{
@@ -42,29 +53,24 @@ public class Game extends JButton   {
 		{
 			@Override
 			public void run() {
-                JOptionPane.showMessageDialog(null, "You lost the game!","Game Over",JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
+                JOptionPane.showMessageDialog(null, "Game Over! Your score is: " + total,"Game Over",JOptionPane.OK_CANCEL_OPTION);
+                gameInvisibility(); 
 			}	
 		}; 
 		timer.cancel();
 		timer = new Timer(); 
 		timer.schedule(gameover, seconds);
 	}
-	
-	//initialize the values
-	int fpoint = 0;
-	int spoint = 0;
-	int tpoint = 0;
-	int total = fpoint + spoint + tpoint; 
-	Random rand = new Random();
 	//Target method to make the buttons and set their colors
-	public void target(){
+	public void normalTarget(){
 		
-		JFrame frame = new JFrame("HIT!");
+		JFrame frame = new JFrame("Normal Mode");
 		frame.setVisible(true);
 		frame.setSize(500,500);
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
+		frame.setBackground(color);
+		
+		panel = new JPanel();  
+		panel.setBackground(color);
 	
 		final JButton  first = new JButton();
 		first.setBackground(Color.WHITE);
@@ -78,32 +84,24 @@ public class Game extends JButton   {
 		first.add(second);
 		second.add(third);
 		
-		this.setVisible(true);
-		
-
-		
-		
 		//action listener for the first button
 		first.addActionListener(
 				new ActionListener()
 				{
 					@Override
 					public void actionPerformed(ActionEvent e) {
-							 fpoint += 1;
-							 total = fpoint + spoint + tpoint; 
-							 System.out.println(total);
-							 if (e.getSource() == first){
-								 
-							        first.setLocation(rand.nextInt(300),rand.nextInt(300));
-					                first.repaint();
-					            }
-				                if (secs-500 >= 1000){
-					                secs -= 500;}
-					                
-					                updateTime(secs);  
+						fpoint += 1;
+						total = fpoint + spoint + tpoint; 
+						if (e.getSource() == first){
+							first.setLocation(rand.nextInt(300),rand.nextInt(300));
+					        first.repaint();
+					    }
+				        if (secs-minus >= 1000){
+					        secs -= minus;
+					    }    
+				        updateTime(secs);  
 					}
-					}
-				
+				}
 			);
 		
 		//action listener for the second button
@@ -113,22 +111,20 @@ public class Game extends JButton   {
 				{
 					@Override
 					public void actionPerformed(ActionEvent e) {
-							 spoint += 2;
-							 total = fpoint + spoint + tpoint;
-							 System.out.println(total);
-							 if (e.getSource() == second){
-								 for(int i=0;i<=300;i++)
-						            {
-						                first.setLocation(rand.nextInt(300),rand.nextInt(300));
-						                first.repaint();
-						            }
-					                if (secs-500 >= 1000){
-						                secs -= 500;}
-						                
-						                updateTime(secs);  
+						spoint += 2;
+						total = fpoint + spoint + tpoint;
+						if (e.getSource() == second){
+							for(int i=0;i<=300;i++)
+						    {
+								first.setLocation(rand.nextInt(300),rand.nextInt(300));
+						        first.repaint();
+						    }
+					        if (secs-minus >= 1000){
+					        	secs -= minus;
+						    }   
+						updateTime(secs);  
 						}
 					}
-					
 				}
 			);
 		
@@ -140,32 +136,25 @@ public class Game extends JButton   {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						tpoint += 3;
-						 total = fpoint + spoint + tpoint;
-						 System.out.println(total);	
-						 if (e.getSource() == third){
-							 for(int i=0;i<=300;i++)
-					            {
-					                first.setLocation(rand.nextInt(300),rand.nextInt(300));
-					                first.repaint();  
-					            }
-				                if (secs-500 >= 1000){
-					                secs -= 500;}
-					                
-					                updateTime(secs);  
+						total = fpoint + spoint + tpoint;
+						if (e.getSource() == third){
+							for(int i=0;i<=300;i++)
+					        {
+								first.setLocation(rand.nextInt(300),rand.nextInt(300));
+					            first.repaint();  
+					        }
+							if (secs-minus >= 1000){
+					            secs -= minus;
+					        }        
+							updateTime(secs);  
+						}
 					}
-						 }
-					
 				}
 			);
-				
-		System.out.println(total);
-
 		frame.add(panel);
 	}
-	//the main method	
-
-	public static void  main(String args[]) { 
-		Game g = new Game(); 
-		g.runGame();
-}
+	public void gameInvisibility()
+	{
+		System.exit(0); 
+	}
 }

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Mode extends JFrame 
@@ -32,8 +33,11 @@ public class Mode extends JFrame
 					public void actionPerformed(ActionEvent e) 
 					{
 						//Call method that brings you to the options of the type of game this includes making things visible and invisible 
-						//Call normal game mode 
-						//Game.normal(); 	
+						//Call normal game mode
+						modeMenuInvisibility(); 
+						Game run = new Game(); 
+						run.setSize(500,500); 
+						run.runGame(); 	
 					}	
 				}
 			);
@@ -48,6 +52,7 @@ public class Mode extends JFrame
 						//Call method that brings you to a new GUI for the settings menu this includes making things visible and invisible 
 						//Call speed run game mode
 						//Game.speedrun
+						JOptionPane.showMessageDialog(null, "THIS GAME MODE HAS NOT BEEN CREATED YET","Error",JOptionPane.ERROR_MESSAGE);
 					}	
 				}
 			);

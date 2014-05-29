@@ -8,8 +8,11 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-public class readIn extends SettingsMenu
+public class readIn 
 { 
+	Scanner input; 
+	Color backColor; 
+	int newDifficulty; 
 	public void openFile()
 	{
 		try
@@ -31,43 +34,35 @@ public class readIn extends SettingsMenu
 				int settingInput = input.nextInt();
 				if (settingInput == 0)
 				{
-					Easy = true; 
+					setDifficulty(200);  
 				}
 				else if (settingInput == 1)
 				{
-					Medium = true; 
+					setDifficulty(500); 
 				}
 				else if (settingInput == 2)
 				{
-					Hard = true; 
+					setDifficulty(800); 
 				}
 				if (settingInput == 3)
 				{
-					Black = true; 
+					setColor(Color.BLACK); 
 				}
 				else if (settingInput == 4)
 				{
-					Blue = true; 
+					setColor(Color.BLUE); 
 				}
 				else if (settingInput == 5)
 				{
-					Green = true;  
+					setColor(Color.GREEN); 
 				}
 				else if (settingInput == 6)
 				{
-					Yellow = true; 
+					setColor(Color.YELLOW); 
 				}
 				else if (settingInput == 7)
 				{
-					White = true; 
-				}
-				if (settingInput == 8)
-				{
-					SpeedRun = true;  
-				}
-				else if (settingInput == 9)
-				{
-					Normal = true; 
+					setColor(Color.WHITE); 
 				}
 			}
 		}
@@ -89,14 +84,20 @@ public class readIn extends SettingsMenu
 			input.close();
 		}
 	}
+	public void setDifficulty(int difficulty)
+	{
+		newDifficulty = difficulty;
+	}
 	public int getDifficulty()
 	{
-		return 0;
-		//this should be set to a variable 
+		return newDifficulty;
+	}
+	public void setColor(Color color)
+	{
+		backColor = color; 
 	}
 	public Color getColor()
 	{
-		return Color.GREEN;
-		//this should be set to a variable 
+		return backColor;
 	}
 }

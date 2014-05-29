@@ -16,15 +16,14 @@ public class SettingsMenu extends JFrame implements ActionListener
 	//Sets up objects needed for code later 
 	protected JRadioButton easy, medium, hard; 
 	protected JRadioButton black, blue, green, yellow, white; 
-	protected JRadioButton speedRun, normal;
 	private JButton goBack, submit; 
 
 	protected Formatter output; 
 	protected Scanner input; 
 
-	protected int EASY = 0, MEDIUM = 1, HARD = 2, BLACK = 3, BLUE = 4, GREEN = 5, YELLOW = 6, WHITE = 7, SPEEDRUN = 8, NORMAL = 9;
-	protected boolean Easy, Medium, Hard, Black, Blue, Green, Yellow, White, SpeedRun, Normal; 
-	private int type = 9, color = 3, difficulty = 0; 
+	protected int EASY = 0, MEDIUM = 1, HARD = 2, BLACK = 3, BLUE = 4, GREEN = 5, YELLOW = 6, WHITE = 7;
+	protected boolean Easy, Medium, Hard, Black, Blue, Green, Yellow, White;
+	private int color = 3, difficulty = 0; 
 
 	JPanel panelSettings, panelNorth, panelCenter, panelSouth; 
 	
@@ -63,12 +62,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 		color.add(yellow);
 		color.add(white);
 		
-		speedRun = new JRadioButton("Speed Run"); 
-		normal = new JRadioButton("Normal"); 
-		
-		type.add(speedRun);
-		type.add(normal);
-		
 		//Submit settings
 		submit = new JButton("Submit"); 
 		submit.addActionListener(this); 
@@ -100,8 +93,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 		panelSettings.setLayout(new BorderLayout());
 		
 		//Adding the buttons to the settings Menu 
-		panelNorth.add(normal); 
-		panelNorth.add(speedRun);
 		panelCenter.add(easy); 
 		panelCenter.add(medium); 
 		panelCenter.add(hard); 
@@ -131,16 +122,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 		Green = false; 
 		Yellow = false; 
 		White = false; 
-		SpeedRun = false; 
-		Normal = false; 
-		if (normal.isSelected())
-		{
-			type = NORMAL; 
-		}
-		else if (speedRun.isSelected()) 
-		{
-			type = SPEEDRUN; 
-		}
 		if (easy.isSelected()) 
 		{
 			difficulty = EASY;  
@@ -174,7 +155,7 @@ public class SettingsMenu extends JFrame implements ActionListener
 			color = WHITE; 
 		}
 		createSettingsFile(); 
-		updateSetting(type, difficulty, color); 
+		updateSetting(difficulty, color); 
 		closeWriteFile(); 
 		settingsInvisibility(); 
 		MainMenu main = new MainMenu(); 
@@ -205,11 +186,11 @@ public class SettingsMenu extends JFrame implements ActionListener
 		}	
 	}
 	//Updates the settings and re-writes the file
-	public void updateSetting(int type, int difficulty, int color)
+	public void updateSetting(int difficulty, int color)
 	{
 		try
 		{
-			output.format("%d%n%d%n%d%n", type, difficulty, color); 
+			output.format("%d%n%d%n", difficulty, color); 
 		}
 		catch(FormatterClosedException ex)
 		{

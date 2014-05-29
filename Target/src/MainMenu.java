@@ -69,7 +69,6 @@ public class MainMenu extends JFrame
 				}
 			);
 		//Making a new Start Menu Panel
-		//frame = new JFrame(); 
 		panelStart = new JPanel(); 
 		
 		//Adding the buttons to the Start Menu 
