@@ -51,7 +51,7 @@ public class MainMenu extends JFrame
 						//Call Class SettingsMenu
 						mainMenuInvisibility(); 
 						SettingsMenu settings = new SettingsMenu(); 
-						settings.setSize(400, 300);
+						settings.setSize(600, 300);
 						settings.setVisible(true);
 					}	
 				}

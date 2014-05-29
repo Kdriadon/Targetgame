@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-public class readIn 
+public class readIn
 { 
 	Scanner input; 
 	Color backColor; 

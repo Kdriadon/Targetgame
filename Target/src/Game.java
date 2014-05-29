@@ -40,7 +40,7 @@ public class Game extends JFrame{
 		TimerTask gameover = new TimerTask() { 
             @Override
             public void run() {
-                JOptionPane.showMessageDialog(null, "You lost the game! Your score: 0","Game Over",JOptionPane.OK_CANCEL_OPTION);
+                JOptionPane.showMessageDialog(null, "You lost the game! You did not play the game!","Game Over",JOptionPane.OK_CANCEL_OPTION);
                 gameInvisibility(); 
             }
          };
@@ -76,7 +76,6 @@ public class Game extends JFrame{
 		first.setBackground(Color.WHITE);
 		final JButton second = new JButton();
 		second.setBackground(Color.RED);
-
 		final JButton third = new JButton();
 		third.setBackground(Color.WHITE);
 

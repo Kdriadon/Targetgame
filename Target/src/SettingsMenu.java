@@ -22,7 +22,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 	protected Scanner input; 
 
 	protected int EASY = 0, MEDIUM = 1, HARD = 2, BLACK = 3, BLUE = 4, GREEN = 5, YELLOW = 6, WHITE = 7;
-	protected boolean Easy, Medium, Hard, Black, Blue, Green, Yellow, White;
 	private int color = 3, difficulty = 0; 
 
 	JPanel panelSettings, panelNorth, panelCenter, panelSouth; 
@@ -40,7 +39,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 		
 		ButtonGroup difficulty = new ButtonGroup(); 
 		ButtonGroup color = new ButtonGroup(); 
-		ButtonGroup type = new ButtonGroup(); 
 		
 		easy = new JRadioButton("Easy");
 		medium = new JRadioButton("Medium"); 
@@ -83,11 +81,9 @@ public class SettingsMenu extends JFrame implements ActionListener
 			);
 		
 		//Making a new Settings Menu Panel
-		panelSettings = new JPanel(); 
-		panelNorth = new JPanel(); 
+		panelSettings = new JPanel();  
 		panelCenter = new JPanel(); 
 		panelSouth = new JPanel();
-		panelNorth.setLayout(new FlowLayout()); 
 		panelCenter.setLayout(new FlowLayout()); 
 		panelSouth.setLayout(new FlowLayout()); 
 		panelSettings.setLayout(new BorderLayout());
@@ -104,7 +100,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 		panelSouth.add(submit, BorderLayout.SOUTH); 
 		panelSouth.add(goBack, BorderLayout.SOUTH);
 		
-		panelSettings.add(panelNorth, BorderLayout.NORTH); 
 		panelSettings.add(panelCenter, BorderLayout.CENTER); 
 		panelSettings.add(panelSouth, BorderLayout.SOUTH); 
 		
@@ -114,14 +109,6 @@ public class SettingsMenu extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		Easy = false; 
-		Medium = false; 
-		Hard = false; 
-		Black = false; 
-		Blue = false; 
-		Green = false; 
-		Yellow = false; 
-		White = false; 
 		if (easy.isSelected()) 
 		{
 			difficulty = EASY;  
