@@ -96,7 +96,7 @@ public class Game extends JFrame{
 							first.setLocation(rand.nextInt(300),rand.nextInt(300));
 					        first.repaint();
 					    }
-				        if (secs-minus >= 1000){
+				        if (secs-minus >= stops){
 					        secs -= minus;
 					    }    
 				        updateTime(secs);  
@@ -119,7 +119,7 @@ public class Game extends JFrame{
 								first.setLocation(rand.nextInt(300),rand.nextInt(300));
 						        first.repaint();
 						    }
-					        if (secs-minus >= 1000){
+					        if (secs-minus >= stops){
 					        	secs -= minus;
 						    }   
 						updateTime(secs);  
@@ -143,7 +143,7 @@ public class Game extends JFrame{
 								first.setLocation(rand.nextInt(300),rand.nextInt(300));
 					            first.repaint();  
 					        }
-							if (secs-minus >= 1000){
+							if (secs-minus >= stops){
 					            secs -= minus;
 					        }        
 							updateTime(secs);  

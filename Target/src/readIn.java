@@ -34,15 +34,15 @@ public class readIn
 				int settingInput = input.nextInt();
 				if (settingInput == 0)
 				{
-					setDifficulty(200);  
+					setDifficulty(500);  
 				}
 				else if (settingInput == 1)
 				{
-					setDifficulty(500); 
+					setDifficulty(800); 
 				}
 				else if (settingInput == 2)
 				{
-					setDifficulty(800); 
+					setDifficulty(1100); 
 				}
 				if (settingInput == 3)
 				{
