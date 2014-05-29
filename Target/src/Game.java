@@ -17,7 +17,7 @@ public class Game extends JFrame{
 	Color color;
 	int secs = 10000;
 	int minus;
-	int stops = 1000;
+	int stops = 500;
 	public Timer timer; 
 
 	
@@ -48,7 +48,7 @@ public class Game extends JFrame{
          timer.schedule(gameover, secs);
 	}
 	public void updateTime(int seconds)
-	{
+	{ 
 		TimerTask gameover = new TimerTask()
 		{
 			@Override
@@ -60,6 +60,13 @@ public class Game extends JFrame{
 		timer.cancel();
 		timer = new Timer(); 
 		timer.schedule(gameover, seconds);
+	}
+	public void displayTimer()
+	{
+		while (Integer.parseInt(timer.toString()) % 1000 == 0)
+		{
+//			System.out.prt
+		}
 	}
 	//Target method to make the buttons and set their colors
 	public void normalTarget(){
@@ -98,6 +105,8 @@ public class Game extends JFrame{
 				        if (secs-minus >= stops){
 					        secs -= minus;
 					    }    
+				        else
+				        	secs=stops;
 				        updateTime(secs);  
 					}
 				}
@@ -120,7 +129,9 @@ public class Game extends JFrame{
 						    }
 					        if (secs-minus >= stops){
 					        	secs -= minus;
-						    }   
+						    }
+					        else
+					        	secs=stops;
 						updateTime(secs);  
 						}
 					}
@@ -145,6 +156,8 @@ public class Game extends JFrame{
 							if (secs-minus >= stops){
 					            secs -= minus;
 					        }        
+							else
+					        	secs=stops;
 							updateTime(secs);  
 						}
 					}
