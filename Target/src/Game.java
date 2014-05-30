@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.TimerTask;
 
 import javax.swing.*;
-public class Game extends JFrame{
+public class Game extends JFrame implements MouseListener{
 	
 	//initialize the values
 	JPanel panel; 
@@ -20,6 +20,8 @@ public class Game extends JFrame{
 	int stops = 500;
 	public Timer timer; 
 	HighScore hscore = new HighScore();
+	
+	JLabel scores = new JLabel("Score: " + total + " | High Score: " + ""); 
 
 	
 	public Game()
@@ -66,11 +68,9 @@ public class Game extends JFrame{
 	}
 	public void displayTimer()
 	{
-		while (Integer.parseInt(timer.toString()) % 1000 == 0)
-		{
-//			System.out.prt
-		}
-	}
+		
+	} 
+	
 	//Target method to make the buttons and set their colors
 	public void normalTarget(){
 		
@@ -84,14 +84,16 @@ public class Game extends JFrame{
 	
 		final JButton  first = new JButton();
 		first.setBackground(Color.WHITE);
+		first.setLocation(50+rand.nextInt(300),100+rand.nextInt(300));
 		final JButton second = new JButton();
 		second.setBackground(Color.RED);
 		final JButton third = new JButton();
 		third.setBackground(Color.WHITE);
 
-		panel.add(first);
+		panel.add(first); 
 		first.add(second);
 		second.add(third);
+		
 		
 		//action listener for the first button
 		first.addActionListener(
@@ -102,7 +104,7 @@ public class Game extends JFrame{
 						fpoint += 1;
 						total = fpoint + spoint + tpoint; 
 						if (e.getSource() == first){
-							first.setLocation(rand.nextInt(300),rand.nextInt(300));
+							first.setLocation(rand.nextInt(350),100+rand.nextInt(300));
 					        first.repaint();
 					    }
 				        if (secs-minus >= stops){
@@ -127,7 +129,7 @@ public class Game extends JFrame{
 						if (e.getSource() == second){
 							for(int i=0;i<=300;i++)
 						    {
-								first.setLocation(rand.nextInt(300),rand.nextInt(300));
+								first.setLocation(rand.nextInt(350),100+rand.nextInt(300));
 						        first.repaint();
 						    }
 					        if (secs-minus >= stops){
@@ -153,7 +155,7 @@ public class Game extends JFrame{
 						if (e.getSource() == third){
 							for(int i=0;i<=300;i++)
 					        {
-								first.setLocation(rand.nextInt(300),rand.nextInt(300));
+								first.setLocation(rand.nextInt(350),100+rand.nextInt(300));
 					            first.repaint();  
 					        }
 							if (secs-minus >= stops){
@@ -166,10 +168,29 @@ public class Game extends JFrame{
 					}
 				}
 			);
+		panel.add(scores); 
+		frame.addMouseListener(this); 
 		frame.add(panel);
 	}
 	public void gameInvisibility()
 	{
 		System.exit(0); 
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		//if you click outside the target it is minus points 
+		total -= 5; 
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
 	}
 }

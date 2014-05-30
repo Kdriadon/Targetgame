@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 public class HighScore {
 	int highscore; 
+	int scores; 
 	protected Formatter output; 
 	protected Scanner input; 
 	public void openFile()
@@ -20,9 +21,13 @@ public class HighScore {
 		}
 		catch (FileNotFoundException ex)
 		{
-			createHighScoreFile();
-			JOptionPane.showMessageDialog(null, ex.toString(), "Error",
+			//In case the user does not have a high score file it will be made then used
+			JOptionPane.showMessageDialog(null, "High Score File is being created.", "Error",
                     JOptionPane.ERROR_MESSAGE);
+			createHighScoreFile();
+			setscore(scores);  
+			openFile(); 
+			
 		}
 	}
 	public int readHighScore()
@@ -56,10 +61,12 @@ public class HighScore {
 	}
 	public void setscore(int score){
 		openFile();
+		closeWriteFile(); 
+		scores = score;
 		readHighScore();
 		closeReadFile();
-		if (score> highscore)
-		highscore = score;
+		if (scores> highscore)
+		highscore = scores;
 		createHighScoreFile(); 
 		updateHighScore(highscore); 
 		closeWriteFile();

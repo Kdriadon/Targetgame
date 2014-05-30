@@ -24,7 +24,7 @@ public class SettingsMenu extends JFrame implements ActionListener
 	protected int EASY = 0, MEDIUM = 1, HARD = 2, BLACK = 3, BLUE = 4, GREEN = 5, YELLOW = 6, WHITE = 7;
 	private int color = 3, difficulty = 0; 
 
-	JPanel panelSettings, panelNorth, panelCenter, panelSouth; 
+	JPanel panelSettings, panelCenter, panelSouth; 
 	
 	//Constructor 
 	public SettingsMenu() 
