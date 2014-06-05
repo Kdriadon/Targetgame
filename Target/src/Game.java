@@ -44,7 +44,7 @@ public class Game extends JFrame implements MouseListener{
             @Override
             public void run() {
                 hscore.setscore(total); 
-                JOptionPane.showMessageDialog(null, "You lost! You did not play the game! Your highscore is " + hscore.highscore,"Game Over",JOptionPane.OK_CANCEL_OPTION);
+                JOptionPane.showMessageDialog(null, "You lost! You did not play the game! Your highscore is: " + hscore.highscore,"Game Over",JOptionPane.OK_CANCEL_OPTION);
                 gameInvisibility(); 
             }
          };
@@ -58,7 +58,7 @@ public class Game extends JFrame implements MouseListener{
 			@Override
 			public void run() {
 	             hscore.setscore(total);
-	                JOptionPane.showMessageDialog(null, "Game Over! Your score is: " + total + " Your highscore is " + hscore.highscore,"Game Over",JOptionPane.OK_CANCEL_OPTION);
+	                JOptionPane.showMessageDialog(null, "Game Over! Your score is: " + total + " Your highscore is: " + hscore.highscore,"Game Over",JOptionPane.OK_CANCEL_OPTION);
                 gameInvisibility(); 
 			}	
 		}; 
