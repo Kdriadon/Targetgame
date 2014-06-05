@@ -76,7 +76,7 @@ public class HighScore {
 	{
 		try
 		{
-			output = new Formatter("highscore.txt"); 
+			output = new Formatter("highscore.txt");
 		}
 		catch(SecurityException ex)
 		{
